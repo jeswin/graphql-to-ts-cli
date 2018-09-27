@@ -9,8 +9,9 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
+    "@types/minimist": "^1.2.0",
     "@types/node": "^10.5.2",
-    "graphql-to-ts": "^0.0.23",
+    "graphql-to-ts": "^0.0.26",
     "minimist": "^1.2.0"
   },
   "devDependencies": {

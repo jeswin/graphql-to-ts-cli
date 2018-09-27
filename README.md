@@ -12,7 +12,7 @@ npm i graphql-to-ts-cli
 
 ### Generating basic types.
 
-You need a GraphQL schema file (say input.ts) in the following format.
+You need a GraphQL schema file (say input.js) in the following format.
 
 ```ts
 export default `
@@ -38,12 +38,12 @@ export default `
 The following command will write TypeScript interfaces (IPermission and IScuttlespaceUser) to a file named output.ts.
 
 ```bash
-graphql-to-ts types -i input.ts -o output.ts
+graphql-to-ts types -i input.js -o output.ts
 ```
 
 ### Generating resolvers
 
-Again, you need a GraphQL file (say input.ts) in the following format, having the types Query and Mutation defined.
+Again, you need a GraphQL file (say input.js) in the following format, having the types Query and Mutation defined.
 
 ```ts
 export default `
@@ -63,7 +63,7 @@ The following command will write GraphQL resolvers to a file named output.ts.
 
 ```bash
 graphql-to-ts resolvers
-  -i input.ts \
+  -i input.js \
   -o output.ts \
   --apimodule my-api-module \
   --graphqlmodule my-graphql-module \
@@ -106,7 +106,7 @@ export default {
 
 ### Generating queries
 
-Write your queries (in say queries.ts) in the following format.
+Write your queries (in say queries.js) in the following format.
 
 ```ts
 export default `
@@ -116,10 +116,10 @@ export default `
 `;
 ```
 
-The following command will generate Apollo Client Queries
+The following command will generate Apollo Client Queries. You need to provide the schema file as well, which is the same file you used for the above commands (types and resolvers).
 
 ```bash
-graphql-to-ts resolvers -i input.ts -o output.ts
+graphql-to-ts apolloqueries -i queries.js --schema schema.js --gqltypesmodule my-gql-types -o output.ts
 ```
 
 Output looks like this
