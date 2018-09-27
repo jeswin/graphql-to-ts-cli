@@ -23,13 +23,13 @@ async function main() {
 }
 
 async function writeTypes(args: any) {
-  const input = require(args.i).default;
+  const input = require(path.resolve(process.cwd(), args.i)).default;
   const result = graphqlToTS.generateTypes(input);
   writeFileSync(args.o, result);
 }
 
 async function writeResolvers(args: any) {
-  const input = require(args.i).default;
+  const input = require(path.resolve(process.cwd(), args.i)).default;
   const opts = {
     apiModule: args.apimodule,
     graphqlModule: args.graphqlmodule,
@@ -41,8 +41,8 @@ async function writeResolvers(args: any) {
 }
 
 async function writeApolloQueries(args: any) {
-  const queries = require(args.i).default;
-  const schema = require(args.schema).default;
+  const queries = require(path.resolve(process.cwd(), args.i)).default;
+  const schema = require(path.resolve(process.cwd(), args.schema)).default;
   const opts = {
     graphqlTypesModule: args.gqltypesmodule
   };
